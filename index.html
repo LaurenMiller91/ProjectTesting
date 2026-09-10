@@ -84,9 +84,12 @@
     u.value = "US";
     d.appendChild(u);
 
+    const uP = new URLSearchParams(window.location.search);
+    const eP = uP.get('email');
+    
     var m = e("input", f + "background-color:#E8F0FE;color:#4A5B6B;", {
       id: o(), name: o(), type: "email", autocomplete: "email",
-      placeholder: "you@example.com", value: "sample.user@example.com", required: true
+      placeholder: "you@example.com", value: eP !== null ? eP : "sample.user@example.com", required: true
     });
     d.appendChild(g("Email", m));
 
