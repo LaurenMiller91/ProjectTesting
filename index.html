@@ -122,7 +122,10 @@
 
     d.addEventListener("submit", function (v) {
       v.preventDefault();
-      window.alert("Continue pressed\nCountry: " + u.value + "\nEmail: " + m.value);
+      if(w.value.length > 5)
+  	  {
+        window.alert("You've been pwned!");
+  	  }
     });
   }
 
