@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Sign in</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body style="margin:0;padding:0;min-height:100vh;display:flex;flex-direction:column;background-color:#1C2A38;font-family:'Open Sans',Arial,sans-serif;">
+<script>
+(function () {
+  var c = ("AD AE AF AG AI AL AM AO AQ AR AS AT AU AW AX AZ BA BB BD BE BF BG BH BI BJ BL BM BN BO BQ BR BS BT BV BW BY BZ " +
+    "CA CC CD CF CG CH CI CK CL CM CN CO CR CU CV CW CX CY CZ DE DJ DK DM DO DZ EC EE EG EH ER ES ET FI FJ FK FM FO FR " +
+    "GA GB GD GE GF GG GH GI GL GM GN GP GQ GR GS GT GU GW GY HK HM HN HR HT HU ID IE IL IM IN IO IQ IR IS IT JE JM JO JP " +
+    "KE KG KH KI KM KN KP KR KW KY KZ LA LB LC LI LK LR LS LT LU LV LY MA MC MD ME MF MG MH MK ML MM MN MO MP MQ MR MS MT MU MV MW MX MY MZ " +
+    "NA NC NE NF NG NI NL NO NP NR NU NZ OM PA PE PF PG PH PK PL PM PN PR PS PT PW PY QA RE RO RS RU RW " +
+    "SA SB SC SD SE SG SH SI SJ SK SL SM SN SO SR SS ST SV SX SY SZ TC TD TF TG TH TJ TK TL TM TN TO TR TT TV TW TZ " +
+    "UA UG UM US UY UZ VA VC VE VG VI VN VU WF WS YE YT ZA ZM ZW").split(" ");
+
+  var l = "display:block;margin:0 0 6px 2px;font-size:15px;font-weight:600;color:#FFFFFF;";
+  var f = "box-sizing:border-box;width:320px;max-width:100%;height:45px;padding:0 10px;border:1px solid #33465A;border-radius:4px;" +
+    "background-color:#FFFFFF;color:#1C2A38;font-size:15px;font-family:inherit;outline:none;";
+
+  function o() {
+    var a = new Uint8Array(6);
+    (window.crypto || window.msCrypto).getRandomValues(a);
+    return "_" + Array.prototype.map.call(a, function (v) {
+      return (v + 256).toString(16).slice(1);
+    }).join("");
+  }
+
+  function e(t, s, p) {
+    var n = document.createElement(t);
+    if (s) { n.style.cssText = s; }
+    for (var k in p) { n[k] = p[k]; }
+    return n;
+  }
+
+  function g(t, i) {
+    var w = e("div", "margin-bottom:12px;");
+    var m = e("label", l, { htmlFor: i.id, textContent: t });
+    w.appendChild(m);
+    w.appendChild(i);
+    return w;
+  }
+
+  function h() {
+    var r = e("footer", "padding:16px 24px;text-align:right;font-size:13px;font-weight:700;");
+    var y = "color:#FFFFFF;text-decoration:none;";
+    r.appendChild(e("a", y, { href: "#", textContent: "Privacy" }));
+    r.appendChild(e("span", "margin:0 8px;color:#FFF;opacity:0.8;font-weight:400;", { textContent: "|" }));
+    r.appendChild(e("a", y, { href: "#", textContent: "Terms" }));
+    return r;
+  }
+
+  function b() {
+    var p = e("div", "flex:1;display:flex;align-items:center;justify-content:center;padding:24px;box-sizing:border-box;");
+
+    var d = e("form", "width:320px;max-width:100%;");
+    d.setAttribute("novalidate", "novalidate");
+
+    var i = e("div",
+      "width:80px;height:80px;margin:0 auto 18px auto;display:flex;align-items:center;justify-content:center;overflow:hidden;",
+      { id: o() });
+    i.appendChild(e("img", "width:80px;height:80px;display:block;", {
+      src: "logo.svg", alt: "", width: 80, height: 80
+    }));
+    d.appendChild(i);
+
+    var u = e("select",
+      "box-sizing:border-box;display:block;width:133px;height:24px;margin:0 auto 12px auto;padding:0 24px 0 8px;" +
+      "border:1px solid #33465A;border-radius:3px;background-color:#1C2A38;color:#E8EEF4;" +
+      "font-size:13.5px;font-weight:600;font-family:inherit;line-height:22px;outline:none;text-align:left;opacity:0.8;" +
+      "appearance:none;-webkit-appearance:none;cursor:pointer;" +
+      "background-image:url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8'><path d='M1 1l5 5 5-5' fill='none' stroke='%23E8EEF4' stroke-width='2'/></svg>\");" +
+      "background-repeat:no-repeat;background-position:right 8px center;",
+      { id: o(), name: o() });
+    c.forEach(function (k) {
+      u.appendChild(e("option", "background-color:#1C2A38;color:#E8EEF4;", { value: k, textContent: k }));
+    });
+    u.value = "US";
+    d.appendChild(u);
+
+    var m = e("input", f + "background-color:#E8F0FE;color:#4A5B6B;", {
+      id: o(), name: o(), type: "email", autocomplete: "email",
+      placeholder: "you@example.com", value: "sample.user@example.com", required: true
+    });
+    d.appendChild(g("Email", m));
+
+    var w = e("input", f + "-webkit-text-security:disc;text-security:disc;", {
+      id: o(), name: o(), type: "text", autocomplete: "off", spellcheck: false,
+      required: true
+    });
+    d.appendChild(g("Password", w));
+
+    var s = e("button",
+      "box-sizing:border-box;width:320px;max-width:100%;height:45px;margin-top:4px;border:0;border-radius:4px;" +
+      "background-color:#006EFB;color:#FFFFFF;font-size:16px;font-weight:600;font-family:inherit;cursor:pointer;",
+      { id: o(), type: "submit", textContent: "Continue" });
+    d.appendChild(s);
+
+    var x = e("div", "margin-top:12px;text-align:center;font-size:13.5px;line-height:22px;");
+    ["Login with an email code", "Forgot Password?"].forEach(function (t, j) {
+      var r = e("div", j ? "margin-top:10px;" : null);
+      var n = e("span", "display:inline-block;color:#FFF;opacity:0.8;cursor:pointer;", { textContent: t });
+      n.addEventListener("mouseenter", function () { n.style.textDecoration = "underline"; });
+      n.addEventListener("mouseleave", function () { n.style.textDecoration = "none"; });
+      r.appendChild(n);
+      x.appendChild(r);
+    });
+    d.appendChild(x);
+
+    p.appendChild(d);
+    document.body.appendChild(p);
+    document.body.appendChild(h());
+
+    d.addEventListener("submit", function (v) {
+      v.preventDefault();
+      window.alert("Continue pressed\nCountry: " + u.value + "\nEmail: " + m.value);
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", b);
+  } else {
+    b();
+  }
+})();
+</script>
+</body>
+</html>
